@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 * {
   margin: 0px;
   padding: 0px;
+  font-family: 'Inter', sans-serif;
 }
 
 .container {
@@ -18,7 +21,8 @@
   top: 0px;
   left: 0px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   /* Hide the navbar by default */
   left: -200px;
@@ -43,8 +47,8 @@
 
 .line {
   width: 100%;
-  height: 1px;
-  background-color: white;
+  height: 2px;
+  background-color: #699BF7;
   transition: all 0.8s;
 }
 
@@ -61,19 +65,35 @@
 }
 
 .nav-list {
-  border: 2px solid red;
+  margin-top: 50px;
   text-align: left;
 }
 
 .nav-item {
   list-style: none;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item img {
+  width: 100px;
+  height: 100px;
+}
+
+.nav-item .fas {
+  font-size: 45px;
+  color: #699BF7;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .nav-link {
   text-decoration: none;
-  color: white;
-  font-size: 18px;
+  color: #699BF7;
+  font-size: 16px;
   position: relative;
   padding: 3px 0;
 }
@@ -83,7 +103,7 @@
   content: "";
   width: 100%;
   height: 2px;
-  background-color: #699BF7;
+  background-color: white;
   position: absolute;
   left: 0;
   /* Hide the lines by default */
@@ -104,4 +124,9 @@
 .nav-link:hover::before,
 .nav-link:hover::after {
   transform: scaleX(1);
+}
+
+.copyright {
+  color: #699BF7;
+  font-size: 18px;
 }
