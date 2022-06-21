@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 def profile(request, username):
-    images = request.user.profile.post.all()
+    images = request.user.profile
     if request.method == 'POST':
         user_form = UpdateUserForm(request.POST, instance=request.user)
         prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
