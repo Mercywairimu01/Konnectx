@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+  <!-- Stylesheets -->
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+  <title>KONNECTX</title>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="hamburger-menu">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+      </div>
+
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#" class="nav-link">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">About Konnectx</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="#" class="nav-link">Contact Support</a>
+        </li>
+
+      </ul>
+
+    </nav>
+  </div>
+  
+  {% block scripts %}
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{% static 'js/jquery-3.6.0.min.js' %} "></script>
+  <script src="{% static 'js/popper.min.js' %} "></script>
+  <script src="{% static 'js/bootstrap.min.js' %} "></script>
+  <script src="{% static 'js/script.js' %} "></script>
+  {% endblock %}
+</body>
+</html>
