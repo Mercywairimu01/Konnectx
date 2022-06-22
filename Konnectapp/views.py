@@ -28,3 +28,5 @@ class distributor_register(CreateView):
     form_class= DistributorSignUpForm
     template_name='registration/distributor_register.html'    
 
+def explore(request):
+    return render(request,'explore.html')

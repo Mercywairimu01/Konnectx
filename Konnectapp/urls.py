@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.index, name="landingPage"),
     path('home/',views.home,name='home'),
     path('',views.register,name ='register'),
+    path('explore/',views.explore,name ='explore'),
     path('artist_register/',views.artist_register.as_view(),name='artist_register'),
     path('distributor_register/',views.distributor_register.as_view(),name='distributor_register'),
  
