@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+  <title>KONNECTX</title>
+</head>
+
+<body>
+  <div class="index-container">
+
+    <!-- Navigation Bar -->
+    
+    <div class="header">
+      <!-- Hamburger Menu Section -->
+      <nav class="navbar">
+        <div class="hamburger-menu">
+          <div class="line line-1"></div>
+          <div class="line line-2"></div>
+          <div class="line line-3"></div>
+        </div>
+
+        <ul class="nav-list">
+          <li class="nav-item">
+            <img src="{% static 'images/home.png' %}" />
+            <a href="#" class="nav-link">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <img src="{% static 'images/about.png' %}" />
+            <a href="#" class="nav-link">About Konnectx</a>
+          </li>
+
+          <li class="nav-item">
+            <i class="fas fa-question-circle"></i>
+            <a href="#" class="nav-link">Contact Support</a>
+          </li>
+
+        </ul>
+
+        <p class="copyright">Konnectx &copy; 2022</p>
+      </nav>
+
+      <!-- Authentication Buttons -->
+      <div class="auth-btns">
+        <a style="margin-right: 50px;" href="#">Login</a>
+        <a href="#">Register</a>
+      </div>
+    </div>
+
+    <!-- Logo Section-->
+    <div class="logo">
+      <img src="{% static 'images/logo.png' %}" />
+    </div>
+
+    <div class="welcome">
+      <h2>Welcome to Konnectx</h2>
+      <p>A web application engineered to connect musical artists and credible distributors from all across the globe.</p>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <img src="{% static 'images/artists.png' %}" alt="Artist Image">
+          <p>Artists record and release music</p>
+        </div>
+
+        <div class="col-md-3 middle">
+          <img src="{% static 'images/distributors.png' %}" alt="Artist Image">
+          <p>Distributors avail recorded music to the public</p>
+        </div>
+
+        <div class="col-md-3">
+          <img src="{% static 'images/audience.png' %}" alt="Artist Image">
+          <p>Audience purchase and stream the music</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  {% block scripts %}
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="{% static 'js/jquery-3.6.0.min.js' %} "></script>
+  <script src="{% static 'js/popper.min.js' %} "></script>
+  <script src="{% static 'js/bootstrap.min.js' %} "></script>
+  <script src="{% static 'js/script.js' %} "></script>
+  {% endblock %}
+</body>
+
+</html>

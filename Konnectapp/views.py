@@ -1,10 +1,36 @@
+
 from django.shortcuts import render,redirect,get_object_or_404
-from .forms import UpdateUserForm,UpdateUserProfileForm
 from .models import Profile
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-
+from .forms import *
+from django.views.generic import CreateView
 # Create your views here.
+
+def index(request):
+    '''
+    View function that renders the landing page and its data
+    '''
+    return render(request, "index.html")
+  
+def home(request):
+  
+    return render(request,'home.html')
+  
+def register(request):
+    return render(request,'registration/register.html')
+
+
+class artist_register(CreateView):
+    model=User
+    form_class= ArtistSignUpForm
+    template_name='registration/artist_register.html'
+    
+    
+class distributor_register(CreateView):
+    model=User
+    form_class= DistributorSignUpForm
+    template_name='registration/distributor_register.html'    
 
 def profile(request, username):
     images = request.user.profile
