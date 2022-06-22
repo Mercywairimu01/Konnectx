@@ -53,16 +53,8 @@ def profile(request,id):
         update_profile_form = UpdateProfileForm(instance=request.user.profile)
   return render(request, 'konnectx/profile.html', locals())
 
-
-
-def user_profile(request, username):
-    user_prof = get_object_or_404(User, username=username)
-    if request.user == user_prof:
-        return redirect('profile', username=request.user.username)
-    user_posts = user_prof.profile.post.all()
-    
-    params = {
-        'user_prof': user_prof,
-        'user_posts': user_posts,
-    }
-    return render(request, 'konnectx/user_profile.html', params)
+def edit_profile(request,username):
+    use = User.objects.get(username=username)
+    if request.method == 'POST':
+        return redirect('profile',request.user.username)
+    return render(request, 'konnectxprofile.html')
