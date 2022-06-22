@@ -6,93 +6,123 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
 
     <title>Document</title>
 </head>
 
-<body>
+
 <style>
-    .sidebar {
-      height: 50%;
-      width: 160px;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background-color: #111;
-      overflow-x: hidden;
-      padding-top: 16px;
-      margin-left: 85%;
-      border-radius: 20%;
-    }
-    .sidebar a {
-      padding: 6px 8px 6px 16px;
-      text-decoration: none;
-      font-size: 20px;
-      color: #818181;
-      display: block;
-    }
-    .sidebar a:hover {
-      color: #f1f1f1;
-    }
-    .main {
-      margin-left: 160px; /* Same as the width of the sidenav */
-      padding: 0px 10px;
-    }
-  
-    @media screen and (max-height: 450px) {
-      .sidebar {padding-top: 15px;}
-      .sidebar a {font-size: 18px;}
-    }
-    form{
-      padding: 14px 16px;
-      text-decoration: none;
-      font-size: 17px;
-      float: left;
-    }
+  body{
+    background-color: #131434;
+    background-size: cover;
+    
+  }
+ 
     .image{
       margin-left:30%;
     }
     .para{
       margin-left: 30%;
     }
-  .container{
-    padding:5%;
-    margin-left: 30%;
+  .search{
+    margin-top: 12%;
+    margin-left: 32%;
+    position: fixed;
+    background-color: #131434;
+
   }
+.icon{
+  margin: top 0%;;
+  width: 20%;
+  position:fixed;
+ top: 50%;
+ left: 65%;
+ transform: translate(-120%, -120%);
+}
+.gif1{
+  float: left;
+  margin-left: 28%;
+  margin-top: 18%;
+}
+.gif2{
+  float: right;
+  margin-right: 28%;
+  margin-top: 12.6%;
+  position:fixed;
+  
+}
+
+.dropdown{
+  float: right;
+  width: 1%;
+}
+.heading{
+  margin-left:10%;
+
+}
+nav ul li ul{
+  height: 100%;
+}
+
+.p{
+  color:#F4AA41;
+  margin-left: 40%;
+}
+.dropdown-menu{
+  padding: 20px;
+}
   </style>
-  
-  
-    <div class="sidebar">
-        
+<body>
+<h1 class="heading">Home</h1>
+
+
+<img class="icon" src="{% static 'media/HS Alwafa digital.png' %}" alt="">
+  <div class="container">
+      <nav>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        <img src="{% static 'media/light.jpg' %}" alt="dropdown image" class="img-responsive" style="width:60px;height:60px;border-radius: 100%;" >
+      </button>
     
-        <a><img class='image'style="width:40px;height:42px;border-radius: 100%;" src="{% static 'media/light.jpg' %}" alt=""></a>
-        <p class="para">Mercy</p>
-    
-        <a href="#profile"><i class="fa fa-fw fa-user"></i> Profile</a>
-        <a href="#logout"><i class="fa fa-fw fa-logout"></i> Logout</a>
-        
-  
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+        <li><a class="dropdown-item active" href="#">Profile</a></li>
+        <li><a class="dropdown-item" href="#">Logout</a></li>
+      </ul>
     </div>
+    </nav>
 
 
-    <div class="container">
-        <form action="/action_page.php">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search" name="search" >
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-              </div>
-            </div>
-          </form>
+    <div class="search">
+      <form action="/action_page.php">
+        <div class="input-group rounded">
+          <input style='background-color:#131434;'type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+          <button style="background-color:#131434;" class="input-group-text border-0" id="search-addon">
+            <i  style='height: 30px;'class="fa fa-search"></i>
+          </button>
         </div>
-
-
-
-
+        </form>
     </div>
   
+  </div>
+
+    <div class="gif1">
+      <a href="#" ><img  src="{% static 'media/artist.gif' %}"  width="250" height="250" alt="" style="border-color:Gray; border-bottom:20px; border-left:20px; border-right:20px;
+        border-top:20px; border-width:30%; border-radius: 30%;"/></a>
+        <p class="p">Artist</p>
+    </div>
+    
+    <div class="gif2">
+        <a href="#"><img  src="{% static 'media/distributor.gif' %}"  width="250" height="250" alt="" style="border-color:Gray; border-bottom:20px; border-left:20px; border-right:20px;
+        border-top:20px; border-width:30%; border-radius: 30%;"/></a>
+        <p class="p">Distributors</p>
+    </div>
+    
+   
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
