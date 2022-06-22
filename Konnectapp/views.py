@@ -2,7 +2,9 @@ from django.shortcuts import render,redirect
 from .forms import *
 from django.views.generic import CreateView
 # Create your views here.
-
+def home(request):
+    return render(request,'home.html')
+  
 def register(request):
     return render(request,'registration/register.html')
 
