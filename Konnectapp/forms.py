@@ -40,16 +40,16 @@ class DistributorSignUpForm(UserCreationForm):
         distributor .location =self.cleaned_data.get('location')
         distributor.save() 
         return user 
-      
-class UpdateUserForm(forms.ModelForm):
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 
+
+class UpdateUserInfoForm(forms.ModelForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
     class Meta:
         model = User
         fields = ('username', 'email')
-
-class UpdateUserProfileForm(forms.ModelForm):
+        
+class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['name_artist',  'profile_image', 'location','role_artist','website']
+        fields = ['profile_image', 'name_artist','location', 'website','video']         
     

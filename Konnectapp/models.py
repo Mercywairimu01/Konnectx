@@ -20,7 +20,7 @@ class Distributor(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name_artist = models.CharField(max_length=255, blank=True,null=True)
-    role_artist = models.CharField(max_length=255, blank=True, null=True)
+    video = models.FileField(upload_to='videos_uploaded',null=True,validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
     profile_image = models.ImageField(upload_to ='images/',default= 'default.jpg')
     location = models.CharField(max_length=25, blank=True)
     email = models.EmailField(max_length=255, blank=True)
