@@ -3,110 +3,55 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!--Font Awesome-->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-  <title>Profile Page</title>
+    <title>Profile Page</title>
 </head>
 
 <body>
-  <!-- Navbar Section -->
-  <div class="navbar-layout">
-    <nav class="navbar">
-      <a href="#"><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
-
-      {% if user.is_authenticated %}
-        <div class="logged-info">
-          <p>{{user.username}}</p>
-          <div class="dropdown">
-            <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              <img style="margin-top: 5px;" src="{{ user.profile.profile_image.url }}" alt="">
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="{% url 'profile'}">Profile</a>
-              
+    <!-- Navbar Section -->
+    <div class="navbar-layout">
+        <nav class="navbar">
+            <a href="#"><img src="{% static 'images/logo.png' %}" alt="Logo"><i 
+                class="fas fa-backward" aria-hidden="true"></i></a>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="profile-header-container">   
+                    <div class="profile-header-img">
+                        <img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                        <!-- badge -->
+                        <div class="rank-label-container">
+                            <span class="label label-default rank-label">{{username}}</span>
+                        </div>
+                    </div>
+                </div> 
             </div>
-          </div>
-
-          
-      {% endif %}
-    </nav>
-
-  </div>
-
-  <!-- Profile Info Section -->
-  <div class="hood-info">
-    <img src="{{ user.profile.profile_image.url }}" alt="" />
-
-    <h3>{{user.username}}</h3>
-    <p>{{user.profile.bio}}</p>
-
-    <div class="more-info">
-      <div class="location">
-        <i class="fas fa-map-marker-alt"></i>
-        <p>{{user.profile.location}}</p>
-      </div>
-
-      
-
-    </div>
-
-    <button class="edit-profile-btn" data-toggle="modal" data-target="#updateProfileModal"><a href="#">EDIT
-        PROFILE</a></button>
-
-    <!-- Change Profile Section -->
-    <div class="modal" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalLabel">UPDATE PROFILE</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form action="" method="post" enctype="multipart/form-data">
-              {% csrf_token %}
-              <div class="form-group">
-                <label>Username</label><br>
-                <input type="text" class="form-control" name="username" value="{{user.username}}">
-              </div>
-              <div class="form-group">
-                <label>Email</label><br>
-                <div class="form-control">{{user_info_form.email}}</div>
-              </div>
-              <div class="form-group">
-                {{update_profile_form.bio.label}}
-                <div class="form-control">{{update_profile_form.bio}}</div>
-              </div>
-              <div class="form-group">
-                {{update_profile_form.location.label}}
-                <div class="form-control">{{update_profile_form.location}}</div>
-              </div>
-             
-              <div class="form-group">
-                <label>Upload Profile Image</label>
-                <div class="form-control">{{update_profile_form.profile_image}}</div>
-              </div>
-              <button class="upload-pic" type="submit">UPDATE PROFILE</button>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
         </div>
-      </div>
-    </div>
 
-  </div>
+        </div>
+
+    
+         
+        {% block scripts %}
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'js/jquery-3.6.0.min.js' %} "></script>
+        <script src="{% static 'js/popper.min.js' %} "></script>
+        <script src="{% static 'js/bootstrap.min.js' %} "></script>
+        <script src="{% static 'js/script.js' %} "></script>
+        {% endblock %}
+
+</body>
+
+</html>

@@ -1,10 +1,10 @@
-
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Profile
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .forms import *
 from django.views.generic import CreateView
+
 # Create your views here.
 
 def index(request):
@@ -32,7 +32,7 @@ class distributor_register(CreateView):
     form_class= DistributorSignUpForm
     template_name='registration/distributor_register.html'    
 
-def profile(request,id):
+def profile(request,username):
   '''
   View function that renders the profile page and its data
   '''
