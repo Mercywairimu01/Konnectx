@@ -32,25 +32,27 @@ class distributor_register(CreateView):
     form_class= DistributorSignUpForm
     template_name='registration/distributor_register.html'    
 
-def profile(request, username):
-    images = request.user.profile
-    if request.method == 'POST':
-        user_form = UpdateUserForm(request.POST, instance=request.user)
-        prof_form = UpdateUserProfileForm(request.POST, request.FILES, instance=request.user.profile)
-        if user_form.is_valid() and prof_form.is_valid():
-            user_form.save()
-            prof_form.save()
-            return HttpResponseRedirect(request.path_info)
-    else:
-        user_form = UpdateUserForm(instance=request.user)
-        prof_form = UpdateUserProfileForm(instance=request.user.profile)
-    params = {
-        'user_form': user_form,
-        'prof_form': prof_form,
-        'images': images,
+def profile(request,id):
+  '''
+  View function that renders the profile page and its data
+  '''
 
-    }
-    return render(request, 'konnectx/profile.html', params)
+  user_info_form = UpdateUserInfoForm()
+  update_profile_form = UpdateProfileForm()
+  
+  if request.method == 'POST':
+    user_info_form = UpdateUserInfoForm(request.POST,instance=request.user)
+    update_profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+    
+    if user_info_form.is_valid and update_profile_form.is_valid():
+            user_info_form.save()
+            update_profile_form.save()
+            return HttpResponseRedirect(request.path_info)
+  else:
+        user_info_form = UpdateUserInfoForm(instance=request.user)
+        update_profile_form = UpdateProfileForm(instance=request.user.profile)
+  return render(request, 'konnectx/profile.html', locals())
+
 
 
 def user_profile(request, username):
