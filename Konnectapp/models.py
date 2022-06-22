@@ -24,7 +24,8 @@ class Profile(models.Model):
     name_artist = models.CharField(max_length=255, blank=True,null=True)
     video = models.FileField(upload_to='videos_uploaded',null=True,validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv','mp3'])])
     profile_image = models.ImageField(upload_to ='images/',default= 'default.jpg')
-    location = models.CharField(max_length=25, blank=True)
+    country = models.CharField(max_length=25, blank=True)
+    title = models.CharField(max_length= 200,null=True)
     email = models.EmailField(max_length=255, blank=True)
     website = models.URLField(max_length=250)    
 

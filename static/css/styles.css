@@ -32,12 +32,12 @@ body {
 }
 
 .profile-header-img {
-  padding: 54px;
+  padding: 5px;
 }
 
 .profile-header-img > img.img-circle {
   width: 120px;
-  height: 120px;
+  height: 100px;
   border: 2px solid #51D2B7;
 }
 
@@ -62,4 +62,50 @@ body {
 
 .media-body{
   text-align: center;
+}
+
+.modal-body{
+  text-align: left;
+  border-radius: none;
+}
+
+.artist-info {
+  border: 2px solid black;
+  width: 500px;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 70px;
+  border-radius: 10px;
+  padding: 0px 40px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #4933FF;
+}
+
+.artist-info img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  margin-top: 50px;
+}
+
+.artist-info h3 {
+  font-family: 'Charm', cursive;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-top: 10px;
+}
+
+.more-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.more-info .country{
+  margin-right: 20px;
+}
+
+.more-info .fas {
+  font-size: 20px;
 }
