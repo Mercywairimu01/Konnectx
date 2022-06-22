@@ -31,8 +31,8 @@
                 <div class="modal-content">
                     <form action="" method="post" novalidate enctype="multipart/form-data" class="mr-4 mt-4 ml-4 mb-4">
                         {% csrf_token%}
-                        {{ user_form|crispy}}
-                        {{ prof_form|crispy}}
+                        {{ user_form}}
+                        {{ prof_form}}
                         <button type="submit" class="btn btn-primary btn-sm"> Update Profile</button>
                     </form>
                 </div>
@@ -41,14 +41,14 @@
     </div>
     <hr class="mt-4">
     <div class="card-columns">
-        {% for image in images %}
+        {% if image %}
             <div class="card">
                 <div class="card-body">
                     <img src="{{image.image.url}}" class="card-img">
                    
                 </div>
             </div>
-        {% endfor %}
+        {% endif %}
     </div>
 </div>
 
