@@ -55,21 +55,28 @@ class UpdateUserProfileForm(forms.ModelForm):
     
 
 
-class ProfileForm(forms.ModelForm):
-    distributor_name = forms.CharField(max_length=255)
-    location = forms.CharField(max_length=50)
-    contact = forms.EmailField(max_length=250)
-    social_link = forms.URLField(max_length=255)
+# class ProfileForm(forms.ModelForm):
+#     distributor_name = forms.CharField(max_length=255)
+#     location = forms.CharField(max_length=50)
+#     contact = forms.EmailField(max_length=250)
+#     social_link = forms.URLField(max_length=255)
 
+#     class Meta:
+#         model = DProfile
+#         fields = '__all__'
+#         exclude = ['user']
+
+
+class UpdateDUserForm(forms.ModelForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+
+class UpdateDUserInfoForm(forms.ModelForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
     class Meta:
-        model = Profile
-        fields = '__all__'
-        exclude = ['user']
-
-
-def form_validation_error(form):
-    msg = ""
-    for field in form:
-        for error in field.errors:
-            msg += "%s: %s \\n" % (field.label if hasattr(field, 'label') else 'Error', error)
-    return msg
+        model = User
+        fields = ('username', 'email')
+        
+class UpdateDProfileForm(forms.ModelForm):
+    class Meta:
+        model = DProfile
+        fields = ('p_image', 'title','locale', 'contact','social_link','name_distributor')
