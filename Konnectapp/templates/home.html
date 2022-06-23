@@ -83,21 +83,32 @@ nav ul li ul{
 <img class="icon" src="{% static 'media/HS Alwafa digital.png' %}" alt="">
   <div class="container">
       <nav>
+       
     <div class="dropdown">
       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
         <img src="{% static 'media/light.jpg' %}" alt="dropdown image" class="img-responsive" style="width:60px;height:60px;border-radius: 100%;" >
       </button>
-    
+      {% if user.is_authenticated %}
       <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
         <li><a class="dropdown-item active" href="#">Profile</a></li>
         <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+
+        <a href="{% url 'register' %}"></a>
+        <a href="{url 'login'}"></a>
       </ul>
+      
     </div>
+     {% endif %}
+
     </nav>
 
+    {% for msg in messages %}
+    {{ msg|safe}}
+    {% endfor %}
 
     <div class="search">
-      <form action="/action_page.php">
+      <form action='{% url "search" %}'>
         <div class="input-group rounded">
           <input style='background-color:#131434;'type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
           <button style="background-color:#131434;" class="input-group-text border-0" id="search-addon">
@@ -120,6 +131,7 @@ nav ul li ul{
         border-top:20px; border-width:30%; border-radius: 30%;"/></a>
         <p class="p">Distributors</p>
     </div>
+    
     
    
     
