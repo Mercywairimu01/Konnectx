@@ -5,6 +5,8 @@ from .models import Profile
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.views.generic import CreateView
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import *
 
@@ -38,6 +40,12 @@ def register(request):
     return render(request,'registration/register.html' ,{'form': form, 'msg': msg})
 
 
+
+def explore(request):
+    return render(request,'explore.html')
+
+def profile(request, username):
+    images = request.user.profile
 def login_view(request):
     form = LoginForm(request.POST or None)
     msg = None
@@ -91,18 +99,31 @@ def profile(request,username):
     user_info_form = UpdateUserInfoForm(request.POST,instance=request.user)
     update_profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
     
-    if user_info_form.is_valid and update_profile_form.is_valid():
+
+    params = {
+        'user_prof': user_prof,
+        'user_posts': user_posts,
+    }
+    return render(request, 'konnectx/user_profile.html', params)
+
+
+  if user_info_form.is_valid and update_profile_form.is_valid():
             user_info_form.save()
             update_profile_form.save()
             return HttpResponseRedirect(request.path_info)
   else:
         user_info_form = UpdateUserInfoForm(instance=request.user)
         update_profile_form = UpdateProfileForm(instance=request.user.profile)
-  return render(request, 'konnectx/profile.html', locals())
+        return render(request, 'konnectx/profile.html', locals())
+
 
 def edit_profile(request,username):
     use = User.objects.get(username=username)
     if request.method == 'POST':
         return redirect('profile',request.user.username)
     return render(request, 'konnectx/profile.html')
+
+def logoutUser(request):
+    logout(request)
+    return redirect('landingPage')
 
