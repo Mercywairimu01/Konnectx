@@ -53,7 +53,7 @@ class DProfile(models.Model):
     name_distributor = models.CharField(max_length=255, blank=True,null=True)
     image = models.ImageField(upload_to ='images/',default= 'default.jpg')
     location = models.CharField(max_length=25, blank=True)
-    number = models.IntegerField(max_length=20,null=True)
+    number = models.IntegerField(null=True)
     email = models.EmailField(max_length=255, blank=True)
     website = models.URLField(max_length=250)
 
