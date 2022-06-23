@@ -13,6 +13,7 @@
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
 
     <!-- Stylesheets -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
@@ -45,9 +46,11 @@
         <div class="artist-info">
             <img src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120"
                 alt="" />
+                
 
             <h3>{{user.username}}</h3>
             <p> Song:{{user.profile.title}} by {{user.username}}</p>
+
 
 
             <div class="more-info">
@@ -88,18 +91,18 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label><br>
-                                            <div class="form-control">{{user_info_form.email}}</div>
+                                            <input type="text"class="form-control"name="email" value="{{user.email}}">
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group">                               
                                             {{update_profile_form.title.label}}
-                                            <div class="form-control">{{update_profile_form.title}}</div>
+                                            <input type="text"class="form-control"name="email" value="{{user.profile.title}}">
                                         <div class="form-group">
                                             {{update_profile_form.website.label}}
-                                            <div class="form-control">{{update_profile_form.website}}</div>
+                                            <input type="text"class="form-control"name="email" value="{{user.profile.website}}">
                                         </div>
                                         <div class="form-group">
                                             <label>Country</label><br>
-                                            <div class="form-control">{{update_profile_form.country}}</div>
+                                            <input type="text"class="form-control"name="email" value="{{user.profile.country}}" placeholder=">
                                         </div>
                                         <div class="form-group">
                                             {{update_profile_form.video.label}}
@@ -116,15 +119,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-columns">
-                        {% for video in videos %}
-                        <div class="card">
-                            <div class="card-body">
-                                <img src="{{video.video.url}}" class="card-video" alt>
-                            </div>
-                            {% empty%}
-                        </div>
-                        {% endfor%}
+                    <div class="lecteur">
+                        <audio class="fc-media" style="width: 100%;">
+                            <source src="{% if item.video %}{{item.video.url}}
+                            {% else %}{{item.video.url}}{% endif%}" type="video/mp3"/>
+
+                        </audio
                     </div>
                </div>
             </div>
@@ -135,9 +135,11 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{% static 'js/jquery-3.6.0.min.js' %} "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelement-and-player.min.js"></script>
     <script src="{% static 'js/popper.min.js' %} "></script>
     <script src="{% static 'js/bootstrap.min.js' %} "></script>
     <script src="{% static 'js/script.js' %} "></script>
+    <script src="{% static 'js/main.js' %} "></script>
     {% endblock %}
 
 </body>

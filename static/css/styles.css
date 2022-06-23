@@ -4,6 +4,10 @@ body {
   background-color: #0F0A27;
 }
 
+input{
+  border-radius: none;
+}
+
 /* Navigation Bar Section */
 .navbar-layout {
   margin: 0px;
@@ -67,6 +71,7 @@ body {
 .modal-body{
   text-align: left;
   border-radius: none;
+  background-color: #B9DA73;
 }
 
 .artist-info {
@@ -79,7 +84,7 @@ body {
   padding: 0px 40px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #4933FF;
+  background-color: #B399C8;
 }
 
 .artist-info img {
