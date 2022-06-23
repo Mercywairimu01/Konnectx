@@ -53,3 +53,23 @@ class UpdateUserProfileForm(forms.ModelForm):
         model = Profile
         fields = ['name_artist',  'profile_image', 'location','role_artist','website']
     
+
+
+class ProfileForm(forms.ModelForm):
+    distributor_name = forms.CharField(max_length=255)
+    location = forms.CharField(max_length=50)
+    contact = forms.EmailField(max_length=250)
+    social_link = forms.URLField(max_length=255)
+
+    class Meta:
+        model = Profile
+        fields = '__all__'
+        exclude = ['user']
+
+
+def form_validation_error(form):
+    msg = ""
+    for field in form:
+        for error in field.errors:
+            msg += "%s: %s \\n" % (field.label if hasattr(field, 'label') else 'Error', error)
+    return msg

@@ -4,7 +4,11 @@ from .models import Profile
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .forms import *
-from django.views.generic import CreateView
+from .forms import ProfileForm, form_validation_error
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views.generic import CreateView,View
+from django.contrib import messages
 # Create your views here.
 
 def index(request):
@@ -64,3 +68,33 @@ def user_profile(request, username):
         'user_posts': user_posts,
     }
     return render(request, 'konnectx/user_profile.html', params)
+
+
+@method_decorator(login_required(login_url='login'), name='dispatch')
+class ProfileView(View):
+    profile = None
+
+    def dispatch(self, request, *args, **kwargs):
+        self.profile, __ = Profile.objects.get_or_create(user=request.user)
+        return super(ProfileView, self).dispatch(request, *args, **kwargs)
+
+    def get(self, request):
+        context = {'profile': self.profile, 'segment': 'profile'}
+        return render(request, 'customers/profile.html', context)
+
+    def post(self, request):
+        form = ProfileForm(request.POST, request.FILES, instance=self.profile)
+
+        if form.is_valid():
+            profile = form.save()
+            profile.user.name = form.cleaned_data.get('name')
+            profile.user.location = form.cleaned_data.get('location')
+            profile.user.contact = form.cleaned_data.get('location')
+            profile.user.email = form.cleaned_data.get('email')
+            profile.user.socail_link = form.cleaned_data.get('social-link')
+            profile.user.save()
+
+            messages.success(request, 'Profile saved successfully')
+        else:
+            messages.error(request, form_validation_error(form))
+        return redirect('profile')
