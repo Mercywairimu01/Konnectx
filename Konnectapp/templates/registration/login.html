@@ -1,0 +1,95 @@
+{% extends "registration/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid " id="cont">
+    <div class="row ">
+        <div class="col" id="ard">
+            <div class="img">
+                <img src="/static/images/logo.png" alt="" height="400px" style="margin-top: 40px;">
+            </div>
+          
+        
+        <div id="content-section">
+            <div class="wel">
+                <h5 style="font-weight:bolder;font-size:25px;">Welcome back!</h5>
+                <h3 style="font-weight:bolder;">LOGIN </h3>
+                 <p>Kindly login to proceed</p>
+              
+               </div>
+               <form  method="post">
+                {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ form|crispy }}
+                    </fieldset>
+                   <br>
+              <div class="d-flex align-items-center">
+                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+               
+            </div>
+            <div id="regbtn">
+              <input type="submit" value="Log In" class="btn btn-pill text-white btn-block btn-primary">
+              </div>
+            </form>
+                    <div class="border-top pt-3">
+                        <small class="text">
+                          <a href="#" class="forgot-pass">Forgot Password?</a>
+                          <p>Need Have An Account? <br><a class="ml-2" href="{% url 'register'%}">Sign up</a></p>
+                       
+                        </small>
+                    </div>
+                  </div>
+                </div>
+                <center> <P style="color: #699BF7;margin-top: 241px;"> Konnectx© 2022</P></center>
+                
+              </div>
+            </div>
+
+{% endblock%}
+<!-- <div class="container-fluid " id="cont">
+    <div class="row ">
+        <div class="col" id="ard">
+            <img src="/static/images/logo.png" alt="" height="500px" >
+        
+        <div id="content-section">
+                    <div class="wel">
+                    <h5 style="font-weight:bolder;font-size:25px;">Welcome back!</h5>
+                    <h3 style="font-weight:bolder;">LOGIN </h3>
+                     <p>Kindly login to proceed</p>
+                  
+                   </div>
+                <form  method="post">
+                    {% csrf_token %}
+                        <fieldset class="form-group">
+                            {{ form|crispy }}
+                        </fieldset>
+                       <br>
+                  <div class="d-flex align-items-center">
+                    <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                      <input type="checkbox" checked="checked"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                   
+                </div>
+                <div id="regbtn">
+                  <input type="submit" value="Log In" class="btn btn-pill text-white btn-block btn-primary">
+                  </div>
+                </form>
+                <div class="border-top pt-3">
+                    <small class="text">
+                      <a href="#" class="forgot-pass">Forgot Password?</a>
+                      <p>Need Have An Account? <br><a class="ml-2" href="{% url 'register'%}">Sign up</a></p>
+                   
+                    </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <center> <P style="color: #699BF7;margin-top: 200px;"> Konnectx© 2022</P></center>
+    </div>
+  </div> -->
