@@ -87,6 +87,11 @@ input{
   background-color: #B399C8;
 }
 
+.artist-info a{
+  background-color: black;
+  font-size: 2rem;
+}
+
 .artist-info img {
   width: 150px;
   height: 150px;

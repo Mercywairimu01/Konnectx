@@ -49,6 +49,7 @@
                 
 
             <h3>{{user.username}}</h3>
+            <a href="{{user.profile.website}}" style="font-size:30px;text-decoration: none; color: #000;">Play</a>
             <p> Song:{{user.profile.title}} by {{user.username}}</p>
 
 
@@ -62,6 +63,8 @@
                     <i class="fas fa-envelope" aria-hidden="true"></i>
                     <p>{{user.email}}</p>
                 </div>
+
+               
 
                 <div class="col-md-6 mt-3">
                     <div class="media-body">
@@ -124,7 +127,7 @@
                             <source src="{% if item.video %}{{item.video.url}}
                             {% else %}{{item.video.url}}{% endif%}" type="video/mp3"/>
 
-                        </audio
+                        </audio>
                     </div>
                </div>
             </div>
@@ -139,7 +142,6 @@
     <script src="{% static 'js/popper.min.js' %} "></script>
     <script src="{% static 'js/bootstrap.min.js' %} "></script>
     <script src="{% static 'js/script.js' %} "></script>
-    <script src="{% static 'js/main.js' %} "></script>
     {% endblock %}
 
 </body>
