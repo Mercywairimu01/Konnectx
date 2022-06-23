@@ -1,144 +1,106 @@
+
 {% load static %}
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
-
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>home</title>
 </head>
 
-
-<style>
-  body{
-    background-color: #131434;
-    background-size: cover;
-    
-  }
- 
-    .image{
-      margin-left:30%;
-    }
-    .para{
-      margin-left: 30%;
-    }
-  .search{
-    margin-top: 12%;
-    margin-left: 32%;
-    position: fixed;
-    background-color: #131434;
-
-  }
-.icon{
-  margin: top 0%;;
-  width: 20%;
-  position:fixed;
- top: 50%;
- left: 65%;
- transform: translate(-120%, -120%);
-}
-
-.gif1{
-  float: left;
-  margin-left: 28%;
-  margin-top: 18%;
-}
-.gif2{
-  float: right;
-  margin-right: 28%;
-  margin-top: 12.6%;
-  
-  
-}
-
-.dropdown{
-  float: right;
-  width: 1%;
-}
-.heading{
-  margin-left:10%;
-
-}
-nav ul li ul{
-  height: 100%;
-}
-
-.p{
-  color:#F4AA41;
-  margin-left: 40%;
-}
-.dropdown-menu{
-  padding: 20px;
-}
-  </style>
 <body>
-<h1 class="heading">Home</h1>
+  <div class="header">
+    <!-- Hamburger Menu Section -->
+    <nav class="navbar">
+      <div class="hamburger-menu">
+        <div class="line line-1"></div>
+        <div class="line line-2"></div>
+        <div class="line line-3"></div>
+      </div>
+  
+      <ul class="nav-list">
+        <li class="nav-item">
+          <img src="{% static 'images/home.png' %}"/>
+          <a href="{% url 'landingPage' %}" class="nav-link">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <img class="rounded-circle" src="{% static 'images/Eminem_4o5KFku.webp' %}"/>
+          <a href="{% url 'profile' user.username%}" class="nav-link">Profile</a>
+          <a href="{% url 'distributor_profile' user.username%}" class="nav-link">dProfile</a>
+        </li>
+        
 
-
-
-<img class="icon" src="{% static 'media/HS Alwafa digital.png' %}" alt="">
-  <div class="container">
-      <nav>
-       
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="{% static 'media/light.jpg' %}" alt="dropdown image" class="img-responsive" style="width:60px;height:60px;border-radius: 100%;" >
-      </button>
-      {% if user.is_authenticated %}
-      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-        <li><a class="dropdown-item active" href="#">Profile</a></li>
-        <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-        <li><a class="dropdown-item" href="{% url 'explore' %}">Explore</a></li>
-        {% else %}
-
-        <a href="{% url 'register' %}"></a>
-        <a href="{url 'login'}"></a>
+  
+        <li class="nav-item">
+          <img src="{% static 'images/about.png' %}" />
+          <a href="{% url 'about'%}" class="nav-link">About Konnectx</a>
+        </li>
+  
+        <li class="nav-item">
+          <i class="fas fa-question-circle"></i>
+          <a href="{% url 'contact'%}" class="nav-link">Contact Support</a>
+        </li>
+  
       </ul>
-      
-    </div>
-     {% endif %}
-
+  
+      <p class="copyright">Konnectx &copy; 2022</p>
     </nav>
-
-    {% for msg in messages %}
-    {{ msg|safe}}
-    {% endfor %}
-
-    <div class="search">
-      <form action='{% url "search" %}'>
-        <div class="input-group rounded">
-          <input style='background-color:#131434;'type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-          <button style="background-color:#131434;" class="input-group-text border-0" id="search-addon">
-            <i  style='height: 30px;'class="fa fa-search"></i>
-          </button>
-        </div>
-        </form>
-
-    </div>
   
   </div>
 
-    <div class="gif1">
-      <a href="#" ><img  src="{% static 'media/artist.gif' %}"  width="250" height="250" alt="" style="border-color:Gray; border-bottom:20px; border-left:20px; border-right:20px;
-        border-top:20px; border-width:30%; border-radius: 30%;"/></a>
-        <p class="p">Artist</p>
+  <div class="container">
+    <div class="row">
+      <div class="col-6" style="margin-top:-100px ;">
+        <center> <div class="search">
+          <form action='{% url "search" %}'>
+            <div class="input-group rounded">
+              <input style='background-color:#131434;'type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+              <button style="background-color:#131434;" class="input-group-text border-0" id="search-addon">
+                <i  style='height: 30px;'class="fa fa-search"></i>
+              </button>
+            </div>
+            </form>
+        </div>
+      </center>
+      </div>
     </div>
+      
+    </nav> 
+  
+  <center> 
+    {% for msg in messages %}
+    <p style="color:white ;font-size:2vh">{{ msg|safe}}</p>
+    {% endfor %}
     
-    <div class="gif2">
-        <a href="#"><img  src="{% static 'media/distributor.gif' %}"  width="250" height="250" alt="" style="border-color:Gray; border-bottom:20px; border-left:20px; border-right:20px;
-        border-top:20px; border-width:30%; border-radius: 30%;"/></a>
-        <p class="p">Distributors</p>
-    </div>
-    
-    
-   
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+    <img class="icon" src="{% static 'media/HS Alwafa digital.png' %}" alt="" height="250px">
+  
+
+  
+<div class="col-md-7" style="display:flex ; justify-content:space-between;">
+  <div class="gif1">
+    <a href="{% url 'explore'%}" ><img  src="{% static 'media/artist.gif' %}"  width="250" height="250" alt="" style="border-color:Gray; border-bottom:20px; border-left:20px; border-right:20px;
+      border-top:20px; border-width:30%; border-radius: 30%;"/></a>
+      <p class="p">Artist</p>
+  </div>
+  <div class="gif2">
+      <a href="{% url 'explore'%}"><img  src="{% static 'media/distributor.gif' %}"  width="250" height="250" alt="" style="border-color:Gray; border-bottom:20px; border-left:20px; border-right:20px;
+      border-top:20px; border-width:30%; border-radius: 30%;"/></a>
+      <p class="p">Distributors</p>
+  </div>
+</div>
+  </center>
+  <center> <P style="color: #699BF7;margin-top: 216px;"> Konnectx© 2022</P></center>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="{% static 'js/script.js' %} "></script>
 </body>
-</html>
+</html> 

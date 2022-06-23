@@ -1,15 +1,16 @@
-{% extends "registration/base.html" %}
+{% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
    
-<div class="container-fluid " id="cont">
-    <div class="row " id="contact">
-        <div class="col-12" style="text-align:center ;">
+<div class="container" >
+    <div class="row " >
+        <div class="col-12" style="text-align:center ;margin-top: -160px;">
             <img src="/static/images/logo.png" alt="" height="280px" >
-            <p style="color:white ;">Having any questions that you want to raise? Kindly post them in the input field provided below. </p>
+            <p style="color:white ;font-size: 2vh;">Having any questions that you want to raise? Kindly post them in the input field provided below. </p>
         </div>
         <center>
-            <div class="col-md-7 mt-5" id="ardi">
+        <div class="row">
+        <div class="col mt-5" style="background-color:#C9E265 ;" >
                 <h2 style="font-weight: bolder;">Post a Query</h2>
                 <form action="#" method="post">
                     {% csrf_token %}
@@ -27,8 +28,10 @@
                     <button type="submit" class="btn btn-primary">Send Inquiry</button>
                 </form>
                 </div>
+                </div>
         </center>          
-        <center> <P style="color: #699BF7;margin-top: 161px;"> Konnectx© 2022</P></center>
-        </div>
+        
+       </div>
+       <center> <P style="color: #699BF7;margin-top: 216px;"> Konnectx© 2022</P></center>
   </div>
 {% endblock content %}

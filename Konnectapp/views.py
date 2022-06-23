@@ -88,38 +88,32 @@ def search_user(request):
   else:
     return redirect('home')
     
-def profile(request, username):
-    images = request.user.profile
-    if request.method == 'POST':
-        user_form = UpdateUserInfoForm(request.POST, instance=request.user)
-        prof_form =  UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
-        if user_form.is_valid() and prof_form.is_valid():
-            user_form.save()
-            prof_form.save()
-            return HttpResponseRedirect(request.path_info)
-    else:
-        user_form = UpdateUserInfoForm(instance=request.user)
-        prof_form =  UpdateProfileForm(instance=request.user.profile)
-    params = {
-        'user_form': user_form,
-        'prof_form': prof_form,
-        'images': images,
+def profile(request,username):
+  '''
+  View function that renders the profile page and its data
+  '''
 
-    }
-    return render(request, 'konnectx/profile.html', params)
-
-
-def user_profile(request, username):
-    user_prof = get_object_or_404(User, username=username)
-    if request.user == user_prof:
-        return redirect('profile', username=request.user.username)
-    user_posts = user_prof.profile.post.all()
+  user_info_form = UpdateUserInfoForm()
+  update_profile_form = UpdateProfileForm()
+  
+  if request.method == 'POST':
+    user_info_form = UpdateUserInfoForm(request.POST,instance=request.user)
+    update_profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
     
-    params = {
-        'user_prof': user_prof,
-        'user_posts': user_posts,
-    }
-    return render(request, 'konnectx/user_profile.html', params)
+    if user_info_form.is_valid and update_profile_form.is_valid():
+            user_info_form.save()
+            update_profile_form.save()
+            return HttpResponseRedirect(request.path_info)
+  else:
+        user_info_form = UpdateUserInfoForm(instance=request.user)
+        update_profile_form = UpdateProfileForm(instance=request.user.profile)
+  return render(request, 'konnectx/profile.html', locals())
+
+def edit_profile(request,username):
+    use = User.objects.get(username=username)
+    if request.method == 'POST':
+        return redirect('profile',request.user.username)
+    return render(request, 'konnectx/profile.html')
 
 def dprofile(request,username):
   '''

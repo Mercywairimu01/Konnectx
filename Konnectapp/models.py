@@ -27,7 +27,7 @@ class Contact(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name_artist = models.CharField(max_length=255, blank=True,null=True)
-    video = models.FileField(upload_to='videos_uploaded',null=True,validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv','mp3'])])
+    video = models.FileField(upload_to='videos_uploaded/',null=True,validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv','mp3'])])
     profile_image = models.ImageField(upload_to ='images/',default= 'default.jpg')
     country = models.CharField(max_length=25, blank=True)
     title = models.CharField(max_length= 200,null=True)
@@ -42,6 +42,10 @@ class Profile(models.Model):
         if created:
             Profile.objects.create(user=instance)
 
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()         
+
 
 
 class DProfile(models.Model):
@@ -55,13 +59,13 @@ class DProfile(models.Model):
 
 
     def __str__(self):
-        return f'{self.user.username} profile'
+        return f'{self.user.username} dprofile'
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
-            Profile.objects.create(user=instance)
+            DProfile.objects.create(user=instance)
 
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()   
+        instance.dprofile.save()   

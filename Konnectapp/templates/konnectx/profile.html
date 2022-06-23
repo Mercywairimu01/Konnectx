@@ -1,29 +1,24 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!--Font Awesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
-
     <!-- Stylesheets -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-
     <title>Profile Page</title>
 </head>
-
 <body>
     <!-- Navbar Section -->
     <div class="navbar-layout">
         <nav class="navbar">
-            <a href="#"><img src="{% static 'images/logo.png' %}" alt="Logo"><i class="fas fa-backward"
+            <a href="{% url 'landingPage'%}"><img src="{% static 'images/logo.png' %}" alt="Logo"><i class="fas fa-backward"
                     aria-hidden="true"></i></a>
         </nav>
         <div class="container">
@@ -31,7 +26,7 @@
                 <div class="profile-header-container">
                     <div class="profile-header-img">
                         <img class="rounded-circle account-img"
-                            src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+                            src="{{user.profile.profile_image.url}}" alt="" />
                         <!-- badge -->
                         <div class="rank-label-container">
                             <span class="label label-default rank-label">{{user.username}}</span>
@@ -40,19 +35,13 @@
                 </div>
             </div>
         </div>
-
         <!-- Profile Info Section -->
         <div class="artist-info">
-            <img src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120"
+            <img src="{{user.profile.profile_image.url}}"
                 alt="" />
-                
-
             <h3>{{user.username}}</h3>
             <audio src="/static/videos_uploaded/Imagine_Dragons_-_Believer_Official_Music_Video_1.mp3" controls></audio>
             <p> Song:{{user.profile.title}} by {{user.username}}</p>
-
-
-
             <div class="more-info">
                 <div class="country">
                     <i class="fas fa-map-marker-alt"></i>
@@ -62,9 +51,6 @@
                     <i class="fas fa-envelope" aria-hidden="true"></i>
                     <p>{{user.email}}</p>
                 </div>
-
-               
-
                 <div class="col-md-6 mt-3">
                     <div class="media-body">
                         <div class="account-heading"><span class="mr-3 text-secondary username"></span>
@@ -87,46 +73,39 @@
                                     <form action="" method="post" enctype="multipart/form-data">
                                         {% csrf_token %}
                                         <div class="form-group">
-                                            <label>Username</label><br>
-                                            <input type="text" class="form-control" name="username"
-                                                value="{{user.username}}">
+                                          <label>Username</label><br>
+                                          <input type="text" class="form-control" name="username" value="{{user.username}}">
                                         </div>
                                         <div class="form-group">
-                                            <label>Email</label><br>
-                                            <input type="text"class="form-control"name="email" value="{{user.email}}">
-                                        </div>
-                                        <div class="form-group">                               
-                                            {{update_profile_form.title.label}}
-                                            <input type="text"class="form-control"name="title" value="{{user.profile.title}}">
-                                        <div class="form-group">
-                                            {{update_profile_form.website.label}}
-                                            <input type="text"class="form-control"name="website" value="{{user.profile.website}}">
+                                          <label>Email</label><br>
+                                          <div class="form-control">{{user_info_form.email}}</div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Country</label><br>
-                                            <input type="text"class="form-control"name="country" value="{{user.profile.country}}">
+                                          {{update_profile_form.title.label}}
+                                          <div class="form-control">{{update_profile_form.title}}</div>
                                         </div>
                                         <div class="form-group">
-                                            {{update_profile_form.video.label}}
+                                          {{update_profile_form.country.label}}
+                                          <div class="form-control">{{update_profile_form.country}}</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="formFile" class="form-label">Upload a Song</label>
                                             <div class="form-control">{{update_profile_form.video}}</div>
                                         </div>
-
                                         <div class="form-group">
-                                            <label>Upload Profile Image</label>
-                                            <div class="form-control">{{update_profile_form.profile_image}}</div>
+                                          <label>Upload Profile Image</label>
+                                          <div class="form-control">{{update_profile_form.profile_image}}</div>
                                         </div>
-                                        <button type="submit" class="btn btn-primary btn-sm"> Update Profile</button>
-                                    </form>
+                                        <button class="upload-pic btn btn-primary btn-sm" type="submit">UPDATE PROFILE</button>
+                                      </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
                </div>
             </div>
-        </div>   
-        
-    </div>    
+        </div>
+    </div>
     {% block scripts %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -136,7 +115,5 @@
     <script src="{% static 'js/bootstrap.min.js' %} "></script>
     <script src="{% static 'js/script.js' %} "></script>
     {% endblock %}
-
 </body>
-
 </html>
