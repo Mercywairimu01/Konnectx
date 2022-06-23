@@ -55,8 +55,8 @@
 
       <!-- Authentication Buttons -->
       <div class="auth-btns">
-        <a style="margin-right: 50px;" href="#">Login</a>
-        <a href="#">Register</a>
+        <a style="margin-right: 50px;" href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
       </div>
     </div>
 
@@ -86,7 +86,7 @@
           <img src="{% static 'images/audience.png' %}" alt="Artist Image">
           <p>Audience purchase and stream the music</p>
         </div>
-      </div>
+      </div>#
     </div>
 
   </div>
