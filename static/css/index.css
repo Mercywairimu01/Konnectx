@@ -4,11 +4,13 @@
   margin: 0px;
   padding: 0px;
   font-family: 'Inter', sans-serif;
+
 }
 
 .index-container {
   width: 100%;
   height: 100vh;
+  margin-top: -150px;
   background-color: #0F0A27;
 }
 
@@ -135,6 +137,7 @@
 .copyright {
   color: #699BF7;
   font-size: 18px;
+  background-color: #131434;
 }
 
 /* AUTHENTICATION BUTTONS SECTION */
@@ -167,7 +170,7 @@
   height: 200px;
   margin: auto;
   display: block;
-  margin-top: -50px;
+  margin-top: 30px;
 }
 
 /* WELCOME INFO SECTION */
@@ -188,8 +191,7 @@
 
 /* SITE INFO SECTION */
 .container {
-  /* border: 2px solid red; */
-  margin-top: 60px;
+  margin-top: 20px;
 }
 
 .container .row {
@@ -199,7 +201,6 @@
 }
 
 .container .row .col-md-3 {
-  /* border: 2px solid red; */
   margin-right: 30px;
   color: #F4AA41;
   display: flex;
@@ -211,15 +212,32 @@
 .container .row .col-md-3 img {
   width: 220px;
   height: 220px;
+  -webkit-animation: action 1s infinite  alternate;
+  animation: action 1s infinite  alternate;
+}
+
+@-webkit-keyframes action {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
+}
+
+@keyframes action {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
 }
 
 .container .row .col-md-3 p {
   text-align: center;
 }
 
-.middle {
-  padding-top: 50px;
+.sides {
+  margin-top: -40px;
 }
+
+.middle {
+  margin-top: 130px;
+}
+
 /* registration */
 body{
   background-color: #131434;

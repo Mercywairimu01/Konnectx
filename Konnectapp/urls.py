@@ -12,7 +12,4 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('search/', views.search_user, name='search'),
     path('profile/<username>/',views.profile,name = 'profile'),
- 
-
-
 ]

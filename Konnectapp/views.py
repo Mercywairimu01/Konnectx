@@ -20,7 +20,6 @@ def home(request):
   
     return render(request,'home.html')
   
-
 def register(request):
     msg = None
     if request.method == 'POST':
