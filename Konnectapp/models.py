@@ -3,7 +3,9 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
 # from django.utils.translation import gettext as _
 # from django.conf.urls.static import static
-# from django.core.validators import FileExtensionValidator
+from django.core.validators import FileExtensionValidator
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 # Create your models here.
 
 class User(AbstractUser):
@@ -51,7 +53,17 @@ class DProfile(models.Model):
     locale = models.CharField(max_length=25, blank=True)
     title = models.CharField(max_length= 200,null=True)
     contact = models.EmailField(max_length=255, blank=True)
-    social_link = models.URLField(max_length=250)    
-    
+    social_link = models.URLField(max_length=250)
+
+
     def __str__(self):
-        return self.title
+        return f'{self.user.username} profile'
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_user_profile(sender, instance, **kwargs):
+        instance.profile.save()   
