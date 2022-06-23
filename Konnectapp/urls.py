@@ -8,9 +8,12 @@ urlpatterns = [
     path('', views.index, name="landingPage"),
     path('home/',views.home,name='home'),
     path('',views.register,name ='register'),
+      path('logout/',views.logoutUser,name='logout'),
     path('explore/',views.explore,name ='explore'),
+    path('register/',views.register,name ='register'),
     path('artist_register/',views.artist_register.as_view(),name='artist_register'),
     path('distributor_register/',views.distributor_register.as_view(),name='distributor_register'),
+    path('profile/<username>/',views.profile,name = 'profile'),
  
 
 ]

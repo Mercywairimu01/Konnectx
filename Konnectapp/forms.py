@@ -1,6 +1,6 @@
-from importlib.metadata import distribution
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.db import transaction
 from .models import *
 
@@ -40,4 +40,16 @@ class DistributorSignUpForm(UserCreationForm):
         distributor .location =self.cleaned_data.get('location')
         distributor.save() 
         return user 
+      
+class UpdateUserForm(forms.ModelForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+
+    class Meta:
+        model = User
+        fields = ('username', 'email')
+
+class UpdateUserProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['name_artist',  'profile_image', 'location','role_artist','website']
     
