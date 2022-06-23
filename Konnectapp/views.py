@@ -57,4 +57,4 @@ def edit_profile(request,username):
     use = User.objects.get(username=username)
     if request.method == 'POST':
         return redirect('profile',request.user.username)
-    return render(request, 'konnectxprofile.html')
+    return render(request, 'konnectx/profile.html')
