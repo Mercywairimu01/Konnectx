@@ -7,10 +7,12 @@ from .views import *
 urlpatterns = [
     path('', views.index, name="landingPage"),
     path('home/',views.home,name='home'),
-    path('register/',views.register,name ='register'),
-    path('artist_register/',views.artist_register.as_view(),name='artist_register'),
-    path('distributor_register/',views.distributor_register.as_view(),name='distributor_register'),
+    path('login/', views.login_view, name='login'),
+    path('register/', views.register, name='register'),
+    path('contact/', views.contact, name='contact'),
+    path('search/', views.search_user, name='search'),
     path('profile/<username>/',views.profile,name = 'profile'),
  
+
 
 ]
