@@ -4,6 +4,9 @@ from django.db.models import Q
 from django.core.validators import FileExtensionValidator
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.contrib.auth.models import User
+
+
 # Create your models here.
 
 class User(AbstractUser):
@@ -44,6 +47,4 @@ class Profile(models.Model):
 
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
-        instance.profile.save()    
-
-
+        instance.profile.save()   
