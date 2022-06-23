@@ -65,57 +65,51 @@ input{
 }
 
 .media-body{
-  text-align: center;
-}
+    text-align: center;
+  }
 
 .modal-body{
-  text-align: left;
-  border-radius: none;
-  background-color: #B9DA73;
+    text-align: left;
+    border-radius: none;
+    background-color: #B9DA73;
 }
-
 .artist-info {
-  border: 2px solid black;
-  width: 500px;
-  text-align: center;
-  margin-top: 70px;
-  margin-bottom: 70px;
-  border-radius: 10px;
-  padding: 0px 40px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #B399C8;
-}
-
-.artist-info a{
-  background-color: black;
-  font-size: 2rem;
-}
-
-.artist-info img {
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  margin-top: 50px;
-}
-
-.artist-info h3 {
-  font-family: 'Charm', cursive;
-  font-weight: bold;
-  text-decoration: underline;
-  margin-top: 10px;
-}
-
-.more-info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.more-info .country{
-  margin-right: 20px;
-}
-
-.more-info .fas {
-  font-size: 20px;
-}
+    border: 2px solid black;
+    width: 500px;
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    border-radius: 10px;
+    padding: 0px 40px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #B399C8;
+  }
+  
+  .artist-info img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    margin-top: 50px;
+  }
+  
+  .artist-info h3 {
+    font-family: 'Charm', cursive;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 10px;
+  }
+  
+  .more-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .more-info .country {
+    margin-right: 20px;
+  }
+  
+  .more-info .fas {
+    font-size: 20px;
+  }
