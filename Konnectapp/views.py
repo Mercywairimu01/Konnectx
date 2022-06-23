@@ -10,6 +10,9 @@ from .forms import *
 
 # Create your views here.
 
+def about(request):
+ 
+    return render(request, 'about.html',)
 def index(request):
     '''
     View function that renders the landing page and its data
@@ -102,3 +105,4 @@ def edit_profile(request,username):
     if request.method == 'POST':
         return redirect('profile',request.user.username)
     return render(request, 'konnectx/profile.html')
+
