@@ -1,5 +1,4 @@
 {% load static %}
-{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +48,7 @@
                 
 
             <h3>{{user.username}}</h3>
-            <a href="{{user.profile.website}}" style="font-size:30px;text-decoration: none; color: #000;">Play</a>
+            <audio src="/static/videos_uploaded/Imagine_Dragons_-_Believer_Official_Music_Video_1.mp3" controls></audio>
             <p> Song:{{user.profile.title}} by {{user.username}}</p>
 
 
@@ -98,14 +97,14 @@
                                         </div>
                                         <div class="form-group">                               
                                             {{update_profile_form.title.label}}
-                                            <input type="text"class="form-control"name="email" value="{{user.profile.title}}">
+                                            <input type="text"class="form-control"name="title" value="{{user.profile.title}}">
                                         <div class="form-group">
                                             {{update_profile_form.website.label}}
-                                            <input type="text"class="form-control"name="email" value="{{user.profile.website}}">
+                                            <input type="text"class="form-control"name="website" value="{{user.profile.website}}">
                                         </div>
                                         <div class="form-group">
                                             <label>Country</label><br>
-                                            <input type="text"class="form-control"name="email" value="{{user.profile.country}}" placeholder=">
+                                            <input type="text"class="form-control"name="country" value="{{user.profile.country}}">
                                         </div>
                                         <div class="form-group">
                                             {{update_profile_form.video.label}}
@@ -122,13 +121,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="lecteur">
-                        <audio class="fc-media" style="width: 100%;">
-                            <source src="{% if item.video %}{{item.video.url}}
-                            {% else %}{{item.video.url}}{% endif%}" type="video/mp3"/>
-
-                        </audio>
-                    </div>
+                    
                </div>
             </div>
         </div>   
