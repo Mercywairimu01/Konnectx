@@ -51,7 +51,7 @@ class UpdateUserForm(forms.ModelForm):
 class UpdateUserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['name_artist',  'profile_image', 'location','role_artist','website']
+        fields = ['name_artist', 'profile_image', 'location','role_artist','website']
     
 
 
@@ -79,4 +79,4 @@ class UpdateDUserInfoForm(forms.ModelForm):
 class UpdateDProfileForm(forms.ModelForm):
     class Meta:
         model = DProfile
-        fields = ('p_image', 'title','locale', 'contact','social_link','name_distributor')
+        fields = '__all__'

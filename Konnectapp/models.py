@@ -49,11 +49,11 @@ class Profile(models.Model):
 class DProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name_distributor = models.CharField(max_length=255, blank=True,null=True)
-    p_image = models.ImageField(upload_to ='images/',default= 'default.jpg')
-    locale = models.CharField(max_length=25, blank=True)
-    title = models.CharField(max_length= 200,null=True)
-    contact = models.EmailField(max_length=255, blank=True)
-    social_link = models.URLField(max_length=250)
+    image = models.ImageField(upload_to ='images/',default= 'default.jpg')
+    location = models.CharField(max_length=25, blank=True)
+    number = models.IntegerField(max_length=20,null=True)
+    email = models.EmailField(max_length=255, blank=True)
+    website = models.URLField(max_length=250)
 
 
     def __str__(self):
