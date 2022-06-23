@@ -36,4 +36,16 @@ class UpdateUserInfoForm(forms.ModelForm):
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['profile_image', 'title','country', 'website','video','name_artist']
+        fields = ['name_artist', 'profile_image', 'location','role_artist','website']
+    
+
+class UpdateDUserInfoForm(forms.ModelForm):
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+    class Meta:
+        model = User
+        fields = ('username', 'email')
+        
+class UpdateDProfileForm(forms.ModelForm):
+    class Meta:
+        model = DProfile
+        fields = '__all__'

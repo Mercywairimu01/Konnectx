@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
 
 body {
@@ -68,6 +69,9 @@ input{
     text-align: center;
   }
 
+.formHint{
+    display: none;
+}
 .modal-body{
     text-align: left;
     border-radius: none;

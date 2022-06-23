@@ -6,9 +6,6 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
-
-# Create your models here.
-
 class User(AbstractUser):
     is_artist = models.BooleanField('An artist', default=False)
     is_distributor = models.BooleanField('A distributor',default=False)
@@ -37,6 +34,26 @@ class Profile(models.Model):
     email = models.EmailField(max_length=255, blank=True)
     website = models.URLField(max_length=250)    
     
+    def __str__(self):
+        return f'{self.user.username} profile'
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+
+
+
+class DProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    name_distributor = models.CharField(max_length=255, blank=True,null=True)
+    image = models.ImageField(upload_to ='images/',default= 'default.jpg')
+    location = models.CharField(max_length=25, blank=True)
+    number = models.IntegerField(max_length=20,null=True)
+    email = models.EmailField(max_length=255, blank=True)
+    website = models.URLField(max_length=250)
+
+
     def __str__(self):
         return f'{self.user.username} profile'
 
