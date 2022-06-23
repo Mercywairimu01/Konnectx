@@ -220,3 +220,74 @@
 .middle {
   padding-top: 50px;
 }
+/* registration */
+body{
+  background-color: #131434;
+}
+
+#hint_id_username{
+  display: none;
+}
+#hint_id_password1{
+  display: none;
+}
+#hint_id_password2{
+  display: none;
+}
+.controls ul >li{
+  display: none;
+}
+#content-section{
+  background-color: #B9DA73;
+  width: 500px;
+  border-radius: 50px;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding: 30px;
+}
+.wel{
+  text-align: center;
+}
+#ard{
+  display: flex;
+  justify-content: center;
+  margin-top: 140px;
+  gap: 50px;
+  
+}
+#ard img{
+  margin-left: -250px;
+}
+
+form{
+  margin-top: 30px;
+}
+#regbtn{
+  margin-top: 15px;
+  margin-bottom: 10px;
+ text-align: center;
+
+}
+/* #cont{
+  background-color: #131434;
+ 
+} */
+.text{
+  display: flex;
+  justify-content: space-between;
+}
+/* contact */
+#ardi{
+  background-color: #B9DA73;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  padding: 38px;
+
+}
+
+@media only screen and (max-width: 1000px) {
+  #ard img{
+   display: none;
+  }
+}

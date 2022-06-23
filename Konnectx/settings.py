@@ -130,6 +130,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+
+LOGIN_REDIRECT_URL ='index'
+LOGIN_URL ='login'
+LOGOUT_REDIRECT_URL ='index'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 MEDIA_URL = 'images/'
 
 STATICFILES_DIRS = [
