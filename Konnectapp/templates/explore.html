@@ -14,30 +14,25 @@
 <style>
     body{
         background-color: #131434;
-        background-attachment: scroll;
+        position: relative;
     }
     .icon{
         margin: top 0%;;
         width: 20%;
-        position:fixed;
-       top: 50%;
-       left: 65%;
-       transform: translate(-120%, -120%);
+       margin-left: 35%;
+       
       }
 
       .search{
-        margin-top: 15%;
-        margin-left: 42%;
-        position: fixed;
+        margin-left: 40%;
+        width: 25% !important;
         background-color: #131434;
-    
       }
     .card{
         background-color: #1A0449;
         width: 20%;
-        height: 28%;
+        height: 38%;
         border-radius: 20%;
-        position: sticky;
         justify-content: center;
         
 
@@ -47,31 +42,34 @@
     }
     #card1{
         float: left;
-        margin-top: 22%;
+        margin-top: 6%;
         margin-left: 24%;
     }
     #card2{
         float: right;
-        margin-top: 22%;
+        margin-top: 6%;
         margin-right: 18%;
     }
 
     #card3{
         float: left;
-        margin-top: 10%;
+        margin-top: 8%;
         margin-left: 24%;
     }
     #card4{
         float: right;
-        margin-top: 10%;
+        margin-top: 8%;
         margin-right: 18%;
     }
-
+   .music{
+    float: left;
+       margin-left:2% ;
+   }
     
 </style>
 
 <body>
-
+    <img class="music" src="{% static 'media/bi_music-note-list.png' %}" alt="">
     <img class="icon" src="{% static 'media/HS Alwafa digital.png' %}" alt="">
 
     <img src="{% static 'media/light.jpg' %}" alt="dropdown image" class="img-responsive" style="width:60px;height:60px;border-radius: 100%; float:right;margin-right:5%;margin-top:5%;" >
@@ -105,7 +103,7 @@
 
 
     <div class="card" id="card2"  style="width: 18rem;">
-        <img src="{% static 'media/shalyn.jpeg' %}" class="card-img-top" style="width:60px;height:60px;border-radius: 100%;" >
+        <img src="{% static 'media/shalyn.jpeg' %}" class="card-img-top" style="width:60px;height:100px;border-radius: 100%;" >
         <div class="card-body">
             <div class="card-text">
                 <p>Name: Shalyn</p>
