@@ -92,6 +92,7 @@ nav ul li ul{
       <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
         <li><a class="dropdown-item active" href="#">Profile</a></li>
         <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+        <li><a class="dropdown-item" href="{% url 'explore' %}">Explore</a></li>
         {% else %}
 
         <a href="{% url 'register' %}"></a>
