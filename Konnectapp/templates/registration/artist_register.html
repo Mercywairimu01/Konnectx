@@ -1,25 +1,31 @@
 {% extends "registration/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="row">
-    <div class="col-4 mx-auto" id="prog">
-    <div class="content-section">
-        <form action="{% url 'artist_register' %}" method="POST" novalidate >
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4  " style="font-family: 'Pacifico', cursive;font-size:40px;color:  rgb(9, 247, 231);text-align: center;">Register</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group" id="regbtn">
-                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+<div class="container-fluid bg-dark">
+    <div class="row ">
+        <div class="col" id="ard">
+            <img src="/static/images/logo.png" alt="" height="500px" >
+        
+        <div id="content-section">
+            <form action="{% url 'artist_register' %}" method="POST" novalidate >
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <h5 style="font-weight: bold;font-size:30px;">Welcome to Konnectx</h5>
+                    <h3 style="font-weight: bold;">Sign Up</h3>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group" id="regbtn">
+                    <button class="btn btn-info bg-info" type="submit">Sign Up</button>
+                </div>
+            </form>
+            <div class="border-top pt-3 mb-3">
+                <small class="text">
+                    Already Have An Account? <a class="ml-2" href="#">Sign In</a>
+                </small>
             </div>
-        </form>
-        <div class="border-top pt-3 mb-3">
-            <small class="text-muted">
-                Already Have An Account? <a class="ml-2" href="#">Sign In</a>
-            </small>
         </div>
+      </div>
+      <center> <P style="color: #699BF7;margin-top: 200px;"> Konnectx© 2022</P></center>
     </div>
-  </div>
 </div>
 {% endblock %}  

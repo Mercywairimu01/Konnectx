@@ -1,59 +1,57 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.models import User
-# from django.utils.translation import gettext as _
-# from django.conf.urls.static import static
+from django.db.models import Q
 from django.core.validators import FileExtensionValidator
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-# Create your models here.
+from django.contrib.auth.models import User
 
 class User(AbstractUser):
-    is_artist = models.BooleanField(default=False)
-    is_distributor = models.BooleanField(default=False)
-    full_name =models.CharField(max_length= 200,null=True)
-    
-    
-class Artist(models.Model):  
-    user =models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
-    location = models.CharField(max_length= 200,null=True)  
-    
-class Distributor(models.Model):  
-    user =models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
-    location = models.CharField(max_length= 200,null=True)  
+    is_artist = models.BooleanField('An artist', default=False)
+    is_distributor = models.BooleanField('A distributor',default=False)
+
+    @classmethod
+    def search_user(cls, searchterm):
+        searchresults = cls.objects.filter(Q(is_artist__icontains=searchterm) | Q(is_distributor__icontains=searchterm))
+        return searchresults
+
+
+class Contact(models.Model):
+    email=models.EmailField()   
+    subject=models.TextField()
+    date=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
     
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name_artist = models.CharField(max_length=255, blank=True,null=True)
-    role_artist = models.CharField(max_length=255, blank=True, null=True)
-    profile_image = models.ImageField(upload_to ='images/',default= 'default-img.jpg')
-    location = models.CharField(max_length=25, blank=True)
+    video = models.FileField(upload_to='videos_uploaded',null=True,validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv','mp3'])])
+    profile_image = models.ImageField(upload_to ='images/',default= 'default.jpg')
+    country = models.CharField(max_length=25, blank=True)
+    title = models.CharField(max_length= 200,null=True)
     email = models.EmailField(max_length=255, blank=True)
     website = models.URLField(max_length=250)    
+    
+    def __str__(self):
+        return f'{self.user.username} profile'
+
+    @receiver(post_save, sender=User)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
 
 
-
-# class DProfile(models.Model):
-#     user = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
-#     avatar = models.ImageField(upload_to="images/", null=True, blank=True)
-#     distributor_name = models.CharField(max_length=255, blank=True,null=True)
-#     distributor_role = models.CharField(max_length=255, blank=True,null=True)
-#     number = models.CharField(max_length=32, null=True, blank=True)
-#     location = models.CharField(max_length=50, null=True, blank=True)
-#     contact = models.CharField(max_length=255, null=True, blank=True)
-#     social_link = models.CharField(max_length=255, null=True, blank=True)
-
-#     def __str__(self):
-#         return self.title
 
 class DProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name_distributor = models.CharField(max_length=255, blank=True,null=True)
-    p_image = models.ImageField(upload_to ='images/',default= 'default.jpg')
-    locale = models.CharField(max_length=25, blank=True)
-    title = models.CharField(max_length= 200,null=True)
-    contact = models.EmailField(max_length=255, blank=True)
-    social_link = models.URLField(max_length=250)
+    image = models.ImageField(upload_to ='images/',default= 'default.jpg')
+    location = models.CharField(max_length=25, blank=True)
+    number = models.IntegerField(max_length=20,null=True)
+    email = models.EmailField(max_length=255, blank=True)
+    website = models.URLField(max_length=250)
 
 
     def __str__(self):
