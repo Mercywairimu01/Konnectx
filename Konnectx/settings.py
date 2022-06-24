@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-6#52e*wn_$5$r*93muo*_!s1*3^0e5onj57_-ug4(@%_o1p^uc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['konnectiex.herokuapp.com','127.0.0.1:8000','0.0.0.0']
+ALLOWED_HOSTS = ['konnectiex.herokuapp.com','127.0.0.1','0.0.0.0']
 
 
 # Application definition
