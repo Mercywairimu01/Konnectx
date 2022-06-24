@@ -61,14 +61,9 @@
     <div class="row">
       <div class="col-6" style="margin-top:-100px ;">
         <center> <div class="search">
-          <form action='{% url "search" %}'>
-            <div class="input-group rounded">
-              <input style='background-color:#131434;'type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-              <button style="background-color:#131434;" class="input-group-text border-0" id="search-addon">
-                <i  style='height: 30px;'class="fa fa-search"></i>
-              </button>
-            </div>
-            </form>
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" action='{% url "search" %}'>
+            <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="search">
+          </form>
         </div>
       </center>
       </div>

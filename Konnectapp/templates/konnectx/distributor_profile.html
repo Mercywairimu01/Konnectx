@@ -20,7 +20,7 @@
     <!-- Navbar Section -->
     <div class="navbar-layout">
         <nav class="navbar">
-            <a href="#"><img src="{% static 'images/logo.png' %}" alt="Logo"><i class="fas fa-backward"
+            <a href="{% url 'landingPage' %}"><img src="{% static 'images/logo.png' %}" alt="Logo"><i class="fas fa-backward"
                     aria-hidden="true"></i></a>
         </nav>
         <div class="container">
@@ -28,8 +28,7 @@
                 <div class="profile-header-container">
                     <div class="profile-header-img">
                         <img class="rounded-circle account-img"
-                            src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
-                        <!-- badge -->
+                        src="{{user.profile.profile_image.url}}" alt="" />
                         <div class="rank-label-container">
                             <span class="label label-default rank-label">{{user.username}}</span>
                         </div>
@@ -39,7 +38,7 @@
         </div>
         <!-- Profile Info Section -->
         <div class="artist-info">
-            <img src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120"
+            <img src="{% static 'images/Eminem_4o5KFku.webp' %}"
                 alt="" />
             <h3>{{user.username}}</h3>
             <div class="more-info">

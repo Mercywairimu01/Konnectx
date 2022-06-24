@@ -2,23 +2,21 @@
 {% block content %}
  {{block.super}}
 
- <div class="container-fluid " id="cont">
+ <div class="container " id="">
     <div class="row " >
- <h1 class="text-center mt-5 mb-5 " style="color:white ;">Search for {{ search_term }}</h1>
+       <h1 class="text-center" style="color:white ;margin-top: -150px;">Search for {{ search_term }}</h1>
   
+        {% for u in searchresults %}
+        <div class='col'>
+          
+      </div>
+        {% empty %}
     
-       
-      {% for u in searchresults %}
-      <div class='col'>
-        
-    </div>
-      {% empty %}
-      <center>
-        <div class="col-8">
-            <p class="alert alert-success text-center mb-5">No Search Results for {{ search_term }}</p>
-        </div>
+          <div col>
+              <p class="alert alert-success text-center mb-5">No Search Results for {{ search_term }}</p>
+          </div>
 
-      </center>
+      
        
       
       {% endfor %}
@@ -26,6 +24,5 @@
    
   </div>
 </div>
-</div>
-</div>
+
  {% endblock %}
